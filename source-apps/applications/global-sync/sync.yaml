@@ -15,9 +15,9 @@ spec:
   syncPolicy:
     # syncTimeout: 5 # seconds, default: unlimited
     # onSyncTimeout: "fail" # or "retry" (?), or "waitForUpdate" (?)
-    # automated:
-    #   prune: true
-    #   selfHeal: true
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
     # retry:
