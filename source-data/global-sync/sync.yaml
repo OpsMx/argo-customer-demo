@@ -5,6 +5,7 @@ metadata:
 data:
   foo: bar
   benda: beera
+  new: test
 ---
 apiVersion: v1
 kind: Secret
