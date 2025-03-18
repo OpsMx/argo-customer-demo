@@ -14,13 +14,13 @@ spec:
           - path: appset-directories.json
   template:
     metadata:
-      name: "{{ path }}"
+      name: "{{ .path | replace '/' '-' }}"
     spec:
       project: default
       source:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git
         targetRevision: new-test
-        path: '{{ path }}'
+        path: '{{ .path }}'
       destination:
         server: https://kubernetes.default.svc
         namespace: test
