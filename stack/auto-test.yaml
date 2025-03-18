@@ -7,20 +7,20 @@ spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
-  - git:
-      repoURL: https://github.com/OpsMx/argo-customer-demo.git 
-      revision: new-test
-      files:
-      - path: appset-directories.json
+    - git:
+        repoURL: https://github.com/OpsMx/argo-customer-demo.git 
+        revision: new-test
+        files:
+          - path: appset-directories.json
   template:
     metadata:
-      name: "{{ .path.basename | replace "/" "-" }}"
+      name: "{{ .path.basename | replace '/' '-' }}"
     spec:
       project: default
       source:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git
         targetRevision: new-test
-        path: '{{path}}'
+        path: '{{ .path }}'
       destination:
         server: https://kubernetes.default.svc
         namespace: test
@@ -28,4 +28,3 @@ spec:
         automated:
           prune: true
           selfHeal: true
-
