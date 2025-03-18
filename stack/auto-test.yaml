@@ -14,13 +14,13 @@ spec:
           - path: appset-directories.json
   template:
     metadata:
-      name: "{{ .path | trimSuffix '.yaml' | replace '/' '-' }"
+      name: "{{ .path | trimSuffix \".yaml\" | replace \"/\" \"-\" }}"
     spec:
       project: default
       source:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git
         targetRevision: new-test
-        path: '{{ .path }}'
+        path: '{{ .path | trimPrefix \"applications/\" | trimSuffix \".yaml\" }}'
       destination:
         server: https://kubernetes.default.svc
         namespace: test
