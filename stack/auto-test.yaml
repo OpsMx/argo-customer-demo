@@ -9,7 +9,7 @@ spec:
         revision: new-test
         directory:
           recurse: true
-          path: '.source-apps/*'  # Root directory containing all applications
+          path: './source-apps/*'  # Root directory containing all applications
   template:
     metadata:
       labels:
