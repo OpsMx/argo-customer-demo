@@ -7,9 +7,9 @@ spec:
     - git:
         repoURL: 'https://github.com/OpsMx/argo-customer-demo.git'  # Replace with your actual repo URL
         revision: new-test
-        directory:
+        files:
           recurse: true
-          path: 'source-apps/**'  # Root directory containing all applications
+          path: appset-directories.json  # Root directory containing all applications
   template:
     metadata:
       labels:
