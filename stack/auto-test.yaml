@@ -14,7 +14,7 @@ spec:
           - path: appset-directories.json
   template:
     metadata:
-      name: "{{ .path | path.Base | replace \"/\" \"-\" }}"
+      name: "{{ path.basename }}"
     spec:
       project: default
       source:
