@@ -24,8 +24,12 @@ spec:
         targetRevision: new-test
         path: "{{.values.base_dir}}"  # Use the base_dir to target the correct path
       destination:
-        server: '{{.cluster.address}}'
-        namespace: '{{.path.basename}}'  # Use the basename of the application directory for the namespace
+        server: https://kubernetes.default.svc
+        namespace: test
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true  # Use the basename of the application directory for the namespace
 
 
 # apiVersion: argoproj.io/v1alpha1
