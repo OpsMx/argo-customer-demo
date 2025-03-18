@@ -1,6 +1,5 @@
 {
-  "directories": [
-    "applications/appset-automated-sync/*",
-    "applications/combination-git-helm-sources/*"
-  ]
+  "repoURL": "https://github.com/OpsMx/argo-customer-demo.git",
+  "revision": "new-test",
+  "path": "source-apps/applications/**"
 }
