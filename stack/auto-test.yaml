@@ -19,6 +19,7 @@ spec:
       source:
         repoURL: 'https://github.com/OpsMx/argo-customer-demo.git'  # Same as above
         targetRevision: new-test
+        path: '{{path}}'
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: default
