@@ -17,7 +17,7 @@ spec:
         filename: "{{.path.basename}}" 
   template:
     metadata:
-      name: '{{.values.filename}}-{{.values.base_dir}}'
+      name: '{{.values.base_dir}}-{{.values.filename}}'
       #name: '{{.path.basename}}'  # Dynamic name based on the file being deployed
     spec:
       project: default
