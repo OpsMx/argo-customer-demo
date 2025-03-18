@@ -17,14 +17,14 @@ spec:
         # filename: "{{.path.basename}}" 
   template:
     metadata:
-      name: '{{.path | splitList "/" | last | replace ".yaml" ""}}'
+      name: '{{.file | splitList "/" | last | replace ".yaml" ""}}'
       #name: '{{.path.basename}}'  # Dynamic name based on the file being deployed
     spec:
       project: default
       source:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git
         targetRevision: new-test
-        path: "{{.values.base_dir}}"  # Use the base_dir to target the correct path
+        path: '{{.file}}' #"{{.values.base_dir}}"  # Use the base_dir to target the correct path
       destination:
         server: https://kubernetes.default.svc
         namespace: test
