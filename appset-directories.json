@@ -1,6 +1,16 @@
 {
-  "directories": [
-    { "path": "./source-apps/applications/*" },
-    { "path": "./source-apps/application-set/*" }
+  "applications": [
+    { "path": "applications/appset-automated-sync/syncapp-dev.yaml" },
+    { "path": "applications/appset-automated-sync/syncapp-prod.yaml" },
+    { "path": "applications/combination-git-helm-sources/1-git-1-helm.yaml" },
+    { "path": "applications/combination-git-helm-sources/2-diff-git-source.yaml" },
+    { "path": "applications/combination-git-helm-sources/2-git-1-helm.yaml" },
+    { "path": "applications/combination-git-helm-sources/2-helm-1-git.yaml" },
+    { "path": "applications/combination-git-helm-sources/2-helm-2-git.yaml" },
+    { "path": "applications/git-source/1-git-source.yaml" },
+    { "path": "applications/git-source/2-git-source.yaml" },
+    { "path": "applications/global-sync/sync.yaml" },
+    { "path": "applications/helm-source/1-helm-source.yaml" },
+    { "path": "applications/helm-source/2-helm-source.yaml" }
   ]
 }
