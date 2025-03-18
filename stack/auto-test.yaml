@@ -17,8 +17,8 @@ spec:
         # filename: "{{.path.basename}}" 
   template:
     metadata:
-      #name: '{{.values.base_dir}}'
-      name: '{{.path.basename}}'  # Dynamic name based on the file being deployed
+      name: '{{.path | splitList "/" | last | replace ".yaml" ""}}'
+      #name: '{{.path.basename}}'  # Dynamic name based on the file being deployed
     spec:
       project: default
       source:
