@@ -1,0 +1,82 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: appset-rolling-sync
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      files:
+      - path: source-data/sync-wave/*/config.json
+      repoURL: https://github.com/OpsMx/argo-customer-demo.git
+      revision: testcase
+  strategy:
+    type: RollingSync
+    rollingSync:
+      steps:
+        - matchExpressions:
+            - key: syncWave
+              operator: In
+              values: 
+                - zero
+          maxUpdate: 100%
+        - matchExpressions:
+            - key: syncWave
+              operator: In
+              values: 
+                - one
+          maxUpdate: 100%
+        - matchExpressions:
+            - key: syncWave
+              operator: In
+              values: 
+                - two
+          maxUpdate: 100%
+        - matchExpressions:
+            - key: syncWave
+              operator: In
+              values: 
+                - three
+          maxUpdate: 100%
+        - matchExpressions:
+            - key: syncWave
+              operator: In
+              values: 
+                - four
+          maxUpdate: 100%
+        - matchExpressions:
+            - key: syncWave
+              operator: In
+              values: 
+                - nine
+          maxUpdate: 100%
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  template:
+    metadata:
+      name: rollingsync-sync-wave-{{ .name}}
+      labels:
+        for: jpmc
+        syncWave: "{{ .syncWave }}"
+      annotations:
+        argocd.argoproj.io/sync-wave: "{{ .syncWave }}"
+    spec:
+      destination:
+        name: in-cluster
+        namespace: '{{ .namespace}}'
+      project: default
+      sources:
+        - repoURL: '{{ .repoURL}}'
+          targetRevision: '{{ .targetRevision}}'
+          chart: '{{ .chart}}'
+          ref: '{{ .ref}}'
+        - repoURL: https://github.com/OpsMx/argo-customer-demo.git
+          targetRevision: testcase
+          path: '{{ .sourcePath }}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+          - ServerSideApply=true
