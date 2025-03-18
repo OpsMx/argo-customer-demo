@@ -1,6 +1,8 @@
-{
-    
-    "path": "./source-apps/applications/*" 
 
+{
+  "applications": [
+    { "path": "./source-apps/applications/*" },
+    { "path": "./source-apps/application-set/*" }
+  ]
 }
 
