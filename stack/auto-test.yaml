@@ -8,8 +8,8 @@ spec:
   goTemplateOptions: ["missingkey=error"]
   generators:
   - git:
-      repoURL: https://github.com/your-repo/your-repository.git
-      revision: HEAD
+      repoURL: https://github.com/OpsMx/argo-customer-demo.git
+      revision: new-test
       files:
         - path: "source-apps/**.yaml"  # This will recursively include all .yaml files under the source-apps directory
       values:
@@ -20,8 +20,8 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/your-repo/your-repository.git
-        targetRevision: HEAD
+        repoURL: https://github.com/OpsMx/argo-customer-demo.git
+        targetRevision: new-test
         path: "{{.values.base_dir}}"  # Use the base_dir to target the correct path
       destination:
         server: '{{.cluster.address}}'
