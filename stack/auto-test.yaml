@@ -4,6 +4,8 @@ metadata:
   name: source-apps-appset
   namespace: argocd
 spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
   generators:
   - git:
       repoURL: https://github.com/OpsMx/argo-customer-demo.git 
