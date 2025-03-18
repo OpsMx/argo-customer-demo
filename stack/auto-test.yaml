@@ -14,10 +14,10 @@ spec:
         - path: "source-apps/**.yaml"  # This will recursively include all .yaml files under the source-apps directory
       values:
         base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}/{{index .path.segments 2}}"
-        filename: "{{.path.basename}}" 
+        # filename: "{{.path.basename}}" 
   template:
     metadata:
-      name: '{{.values.base_dir}}-{{.values.filename}}'
+      name: '{{.values.base_dir}}'
       #name: '{{.path.basename}}'  # Dynamic name based on the file being deployed
     spec:
       project: default
