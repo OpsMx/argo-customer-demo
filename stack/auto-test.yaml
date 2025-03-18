@@ -12,7 +12,7 @@ spec:
       - path: appset-directories.json
   template:
     metadata:
-      name: 'source-apps'
+      name: "{{path.basename}}"
     spec:
       project: default
       source:
