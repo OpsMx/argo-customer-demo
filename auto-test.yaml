@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: source-apps-appset
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/OpsMx/argo-customer-demo.git 
+      revision: new-test
+      files:
+      - path: appset-directories.json
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/OpsMx/argo-customer-demo.git
+        targetRevision: new-test
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: test
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+
