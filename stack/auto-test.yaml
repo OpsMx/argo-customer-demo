@@ -12,7 +12,7 @@ spec:
       repoURL: https://github.com/OpsMx/argo-customer-demo.git
       revision: new-test
       files:
-        - path: "config-dir/*/config.json"  # Adjust this to your actual structure
+        - path: "source-apps/config.json"  # Adjust this to your actual structure
       values:
         base_dir: source-apps #"{{index .path.segments 0}}/{{index .path.segments 1}}/{{index .path.segments 2}}"
   template:
