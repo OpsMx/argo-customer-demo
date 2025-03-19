@@ -1,4 +1,5 @@
 {
+  "repoURL": "https://github.com/OpsMx/argo-customer-demo.git",
+  "revision": "new-test",
   "path": "source-apps/**/*.yaml"
 }
-
