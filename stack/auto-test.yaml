@@ -13,7 +13,7 @@ spec:
       files:
         - path: "source-apps/config.json"  # Use the config.json file for the application set
       values:
-        path: "{{.path.filename}}"
+        path: "{{.path}}"
   template:
     metadata:
       name: '{{.path.filename}}'  # Dynamic name based on the file being deployed
