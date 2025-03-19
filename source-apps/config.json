@@ -1,5 +1,8 @@
 {
-  "repoURL": "https://github.com/OpsMx/argo-customer-demo.git",
-  "revision": "new-test",
-  "path": "source-apps/**/*.yaml"
+  "applications": [
+    "source-apps/applications/appset-automated-sync/syncapp-dev.yaml",
+    "source-apps/applications/appset-automated-sync/syncapp-prod.yaml",
+    "source-apps/applications/combination-git-helm-sources/1-git-1-helm.yaml",
+    "source-apps/applications/git-source/1-git-source.yaml"
+  ]
 }
