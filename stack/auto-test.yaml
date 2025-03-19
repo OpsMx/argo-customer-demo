@@ -11,7 +11,7 @@ spec:
       repoURL: https://github.com/OpsMx/argo-customer-demo.git
       revision: new-test
       files:
-        - path: "appset-directories.json"  # Path to the JSON file containing the path pattern
+        - path: appset-directories.json  # Path to the JSON file containing the path pattern
       values:
         # Access the path from the JSON file
         pathPattern: '{{ (index .files 0).path }}'  
