@@ -14,7 +14,7 @@ spec:
       files:
         - path: "config-dir/*/config.json"  # Adjust this to your actual structure
       values:
-        base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}/{{index .path.segments 2}}"
+        base_dir: source-apps #"{{index .path.segments 0}}/{{index .path.segments 1}}/{{index .path.segments 2}}"
   template:
     metadata:
       name: '{{ .path.basename | replace ".json" "" }}'  # Unique name for each application
