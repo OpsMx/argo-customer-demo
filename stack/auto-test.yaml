@@ -15,7 +15,7 @@ spec:
           - path: "source-apps/config.json" 
   template:
     metadata:
-      name: '{{ app.name }}'  # Name based on config.json
+      name: '{{ applications.name }}'  # Name based on config.json
     spec:
       project: default
       source:
