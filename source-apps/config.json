@@ -1,9 +1,6 @@
 {
   "applications": [
-    "source-apps/applications/appset-automated-sync/syncapp-dev.yaml",
-    "source-apps/applications/appset-automated-sync/syncapp-prod.yaml",
-    "source-apps/applications/combination-git-helm-sources/1-git-1-helm.yaml",
-    "source-apps/applications/git-source/1-git-source.yaml"
-
+    "source-apps/application-set/generators/git-generator.yaml",
+    "source-apps/application-set/generators/list-generator.yaml"
   ]
 }
