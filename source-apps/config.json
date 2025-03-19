@@ -1,29 +1,46 @@
 {
   "applications": [
     {
-      "name": "syncapp-dev",
-      "path": "source-apps/applications/appset-automated-sync/syncapp-dev.yaml"
+      "name": "appset-automated-sync",
+      "path": "source-apps/applications/appset-automated-sync",
+      "files": [
+        "syncapp-dev.yaml",
+        "syncapp-prod.yaml"
+      ]
     },
     {
-      "name": "syncapp-prod",
-      "path": "source-apps/applications/appset-automated-sync/syncapp-prod.yaml"
+      "name": "combination-git-helm-sources",
+      "path": "source-apps/applications/combination-git-helm-sources",
+      "files": [
+        "1-git-1-helm.yaml",
+        "2-diff-git-source.yaml",
+        "2-git-1-helm.yaml",
+        "2-helm-1-git.yaml",
+        "2-helm-2-git.yaml"
+      ]
     },
     {
-      "name": "1-git-source",
-      "path": "source-apps/applications/git-source/1-git-source.yaml"
+      "name": "git-source",
+      "path": "source-apps/applications/git-source",
+      "files": [
+        "1-git-source.yaml",
+        "2-git-source.yaml"
+      ]
     },
     {
-      "name": "2-git-source",
-      "path": "source-apps/applications/git-source/2-git-source.yaml"
+      "name": "global-sync",
+      "path": "source-apps/applications/global-sync",
+      "files": [
+        "sync.yaml"
+      ]
     },
     {
-      "name": "1-helm-source",
-      "path": "source-apps/applications/helm-source/1-helm-source.yaml"
-    },
-    {
-      "name": "2-helm-source",
-      "path": "source-apps/applications/helm-source/2-helm-source.yaml"
-    },
- .
+      "name": "helm-source",
+      "path": "source-apps/applications/helm-source",
+      "files": [
+        "1-helm-source.yaml",
+        "2-helm-source.yaml"
+      ]
+    }
   ]
 }
