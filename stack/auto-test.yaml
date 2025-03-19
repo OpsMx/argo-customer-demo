@@ -1,4 +1,3 @@
-
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -12,23 +11,21 @@ spec:
       repoURL: https://github.com/OpsMx/argo-customer-demo.git
       revision: new-test
       files:
-      - path: "source-apps/config.json"
+        - path: "source-apps/config.json"  # Use the config.json file for the application set
+      values:
+        base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}/{{index .path.segments 2}}"
   template:
     metadata:
-      name: '{{ .application.name }}'
+      name: '{{.path.basename}}'  # Dynamic name based on the file being deployed
     spec:
       project: default
       source:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git
         targetRevision: new-test
-        path: '{{ .application.path }}'
+        path: "{{.values.base_dir}}"  # Use the base_dir to target the correct path
       destination:
-        server: '{{ .application.server }}'
-        namespace: '{{ .application.namespace }}'
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
+        server: https://kubernetes.default.svc
+        namespace: "{{.path.basename}}"
 
 
 
