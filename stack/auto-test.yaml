@@ -22,7 +22,7 @@ spec:
       source:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git
         targetRevision: new-test
-        path:  "{{ .values.path }}/{{ .file.basename }}  # Use the base_dir to target the correct path
+        path:  "{{ .values.path }}/{{ .file.basename }}"  # Use the base_dir to target the correct path
       destination:
         server: https://kubernetes.default.svc
         namespace: test
