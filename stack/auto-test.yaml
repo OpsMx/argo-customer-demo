@@ -11,9 +11,9 @@ spec:
       repoURL: https://github.com/OpsMx/argo-customer-demo.git
       revision: new-test
       files:
-        - path: "source-apps/config.json"  # Use the config.json file for the application set
-      values:
-        path: "{{.path}}"
+        - path: source-apps/config.json  # Use the config.json file for the application set
+      # values:
+      #   path: "{{.path}}"
   template:
     metadata:
       name: '{{.path.basename}}'  # Dynamic name based on the file being deployed
@@ -29,7 +29,10 @@ spec:
       syncPolicy:
         automated:
           prune: true
-          selfHeal: true 
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
+
 
 
 
