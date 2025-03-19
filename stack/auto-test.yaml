@@ -11,24 +11,60 @@ spec:
       repoURL: https://github.com/OpsMx/argo-customer-demo.git
       revision: new-test
       files:
-        - path: "source-apps/**/*.yaml"  # This will recursively include all .yaml files under the source-apps directory
+        - path: "appset-directories.json"  # Path to the JSON file containing the path pattern
       values:
-        base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}/{{index .path.segments 2}}"
+        # Access the path from the JSON file
+        pathPattern: '{{ (index .files 0).path }}'  
   template:
     metadata:
-      name: '{{.path.basename}}'  # Dynamic name based on the file being deployed
+      name: '{{.file | splitList "/" | last | replace ".yaml" ""}}'
     spec:
       project: default
       source:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git
         targetRevision: new-test
-        path: "{{.values.base_dir}}"  # Use the base_dir to target the correct path
+        path: '{{.values.pathPattern}}'  # Use the pathPattern from the JSON file
       destination:
         server: https://kubernetes.default.svc
         namespace: test
       syncPolicy:
         automated:
           prune: true
-          selfHeal: true  # Use the basename of the application directory for the namespace
+          selfHeal: true
+
+
+# this working appset 
+# apiVersion: argoproj.io/v1alpha1
+# kind: ApplicationSet
+# metadata:
+#   name: source-apps
+#   namespace: argocd
+# spec:
+#   goTemplate: true
+#   goTemplateOptions: ["missingkey=error"]
+#   generators:
+#   - git:
+#       repoURL: https://github.com/OpsMx/argo-customer-demo.git
+#       revision: new-test
+#       files:
+#         - path: "source-apps/**/*.yaml"  # This will recursively include all .yaml files under the source-apps directory
+#       values:
+#         base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}/{{index .path.segments 2}}"
+#   template:
+#     metadata:
+#       name: '{{.path.basename}}'  # Dynamic name based on the file being deployed
+#     spec:
+#       project: default
+#       source:
+#         repoURL: https://github.com/OpsMx/argo-customer-demo.git
+#         targetRevision: new-test
+#         path: "{{.values.base_dir}}"  # Use the base_dir to target the correct path
+#       destination:
+#         server: https://kubernetes.default.svc
+#         namespace: test
+#       syncPolicy:
+#         automated:
+#           prune: true
+#           selfHeal: true  # Use the basename of the application directory for the namespace
 
 
