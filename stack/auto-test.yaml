@@ -13,8 +13,7 @@ spec:
       files:
         - path: "source-apps/config.json"  # Reference the config.json file in your repository
       values:
-        base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}/{{index .path.segments 2}}"  # Generate base_dir using the config path
-  
+        app_path: "{{.path}}"
   template:
     metadata:
       name: '{{.path.basename}}'  # Dynamic name based on the file being deployed
@@ -23,7 +22,7 @@ spec:
       source:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git
         targetRevision: new-test
-        path: "{{.values.base_dir}}"  # Use base_dir value from the config.json path
+        path: "{{.values.app_path}}"  # Use base_dir value from the config.json path
       destination:
         server: https://kubernetes.default.svc
         namespace: test
