@@ -13,16 +13,16 @@ spec:
       files:
         - path: "source-apps/config.json"  # Use the config.json file for the application set
       values:
-        path: "{{ .files.path }}"
+        path: "{{.path.filename}}"
   template:
     metadata:
-      name: '{{ .path }}-{{ .file.basename }}'  # Dynamic name based on the file being deployed
+      name: '{{.path.filename}}'  # Dynamic name based on the file being deployed
     spec:
       project: default
       source:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git
         targetRevision: new-test
-        path:  "{{ .values.path }}/{{ .file.basename }}"  # Use the base_dir to target the correct path
+        path:  "{{ .values.path }}-{{.path.filename}}"  # Use the base_dir to target the correct path
       destination:
         server: https://kubernetes.default.svc
         namespace: test
