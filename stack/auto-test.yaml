@@ -17,13 +17,13 @@ spec:
         base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}/{{index .path.segments 2}}"
   template:
     metadata:
-      name: '{{ .path.basename }}'  # Create a unique name for each application
+      name: '{{ .path.basename | replace ".json" ""}}'  # Create a unique name for each application
     spec:
       project: default
       source:
         repoURL: "{{ .repoURL }}"  # Use repoURL from config.json
         targetRevision: "{{ .revision }}"  # Use revision from config.json
-        path: "{{ .path }}"  # Use path from config.json
+        path: "{{ .path | replace "config-dir/temp-dir/config.json" "" | trimSuffix "/" }}"  # Use path from config.json
       destination:
         server: https://kubernetes.default.svc
         namespace: default  # Specify the target namespace
