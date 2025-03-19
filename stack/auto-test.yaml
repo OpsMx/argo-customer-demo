@@ -12,28 +12,25 @@ spec:
       repoURL: https://github.com/OpsMx/argo-customer-demo.git
       revision: new-test
       files:
-        - path: "config-dir/*/config.json"  # This will recursively include all .yaml files under the source-apps directory
+        - path: "config-dir/*/config.json"  # Adjust this to your actual structure
       values:
         base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}/{{index .path.segments 2}}"
   template:
     metadata:
-      name: '{{ .path.basename | replace ".json" ""}}'  # Create a unique name for each application
+      name: '{{ .path.basename | replace ".json" "" }}'  # Unique name for each application
     spec:
       project: default
       source:
-        repoURL: "{{ .repoURL }}"  # Use repoURL from config.json
-        targetRevision: "{{ .revision }}"  # Use revision from config.json
-        path: "{{ .path | replace "config-dir/temp-dir/config.json" "" | trimSuffix "/" }}"  # Use path from config.json
+        repoURL: "https://github.com/OpsMx/argo-customer-demo.git"  # Ensure the repo URL is correct
+        targetRevision: "new-test"  # Ensure the revision is correct
+        path: "{{ .values.base_dir }}"  # Use the base_dir calculated from the config.json
       destination:
         server: https://kubernetes.default.svc
-        namespace: default  # Specify the target namespace
+        namespace: default
       syncPolicy:
         automated:
           prune: true
           selfHeal: true
-
-
-
 
 
 
