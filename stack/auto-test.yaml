@@ -11,10 +11,9 @@ spec:
       repoURL: https://github.com/OpsMx/argo-customer-demo.git
       revision: new-test
       files:
-        - path: "source-apps/**/*.yaml"  # This will recursively include all .yaml files under the source-apps directory
+        - path: appset-directories.json # "source-apps/**/*.yaml"  # This will recursively include all .yaml files under the source-apps directory
       values:
         base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}/{{index .path.segments 2}}"
-        # filename: "{{.path.basename}}" 
   template:
     metadata:
       name: '{{.file | splitList "/" | last | replace ".yaml" ""}}'
