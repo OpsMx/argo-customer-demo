@@ -14,16 +14,21 @@ spec:
       files:
         - path: "source-apps/config.json"  # Adjust this to your actual structure
       values:
-        base_dir: source-apps #"{{index .path.segments 0}}/{{index .path.segments 1}}/{{index .path.segments 2}}"
+        base_dir: source-apps
+  - git:
+      repoURL: https://github.com/OpsMx/argo-customer-demo.git
+      revision: new-test
+      files:
+        - path: "{{ .values.base_dir }}/**/*.yaml"  # This line is key to target all YAML files
   template:
     metadata:
-      name: '{{ .path.basename | replace ".json" "" }}'  # Unique name for each application
+      name: '{{ .path.basename | replace ".yaml" "" }}'  # Unique name for each application
     spec:
       project: default
       source:
         repoURL: "https://github.com/OpsMx/argo-customer-demo.git"  # Ensure the repo URL is correct
         targetRevision: "new-test"  # Ensure the revision is correct
-        path:  "{{ .path }}" #"{{ .values.base_dir }}"  # Use the base_dir calculated from the config.json
+        path: "{{ .path }}"  # Use the path generated from the YAML files
       destination:
         server: https://kubernetes.default.svc
         namespace: default
@@ -31,7 +36,6 @@ spec:
         automated:
           prune: true
           selfHeal: true
-
 
 
 
