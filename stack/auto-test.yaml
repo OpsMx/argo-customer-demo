@@ -12,7 +12,7 @@ spec:
       repoURL: https://github.com/OpsMx/argo-customer-demo.git
       revision: new-test
       files:
-        - path: "source-apps/config.json"  # Adjust this to your actual structure
+        - path: "config-dir/temp-dir/config.json"  # Adjust this to your actual structure
       values:
         base_dir: source-apps #"{{index .path.segments 0}}/{{index .path.segments 1}}/{{index .path.segments 2}}"
   template:
@@ -23,7 +23,7 @@ spec:
       source:
         repoURL: "https://github.com/OpsMx/argo-customer-demo.git"  # Ensure the repo URL is correct
         targetRevision: "new-test"  # Ensure the revision is correct
-        path: "{{ .values.base_dir }}"  # Use the base_dir calculated from the config.json
+        path:  "{{ .path }}" #"{{ .values.base_dir }}"  # Use the base_dir calculated from the config.json
       destination:
         server: https://kubernetes.default.svc
         namespace: default
