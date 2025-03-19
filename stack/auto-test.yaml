@@ -9,13 +9,15 @@ spec:
   goTemplateOptions: ["missingkey=error"]
   generators:
   - git:
-      repoURL: "{{ .repoURL }}"  # Read repoURL from config.json
-      revision: "{{ .revision }}"  # Read revision from config.json
+      repoURL: https://github.com/OpsMx/argo-customer-demo.git
+      revision: new-test
       files:
-        - path: "{{ .path }}"  # Read path from config.json
+        - path: "config-dir/*/config.json"  # This will recursively include all .yaml files under the source-apps directory
+      values:
+        base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}/{{index .path.segments 2}}"
   template:
     metadata:
-      name: '{{ .path.basename | replace ".yaml" "" }}-app'  # Create a unique name for each application
+      name: '{{ .path.basename }}'  # Create a unique name for each application
     spec:
       project: default
       source:
