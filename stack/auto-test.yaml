@@ -12,8 +12,8 @@ spec:
       revision: new-test
       files:
         - path: source-apps/config.json  # Use the config.json file for the application set
-      # values:
-      #   base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}/{{index .path.segments 2}}"
+      values:
+        base_dir: "{{ .files.source-apps.config.json.path | splitList \"/\" | index 0 }}/{{ .files.source-apps.config.json.path | splitList \"/\" | index 1 }}/{{ .files.source-apps.config.json.path | splitList \"/\" | index 2 }}"
   template:
     metadata:
       name: '{{.path.basename}}'  # Dynamic name based on the file being deployed
@@ -22,7 +22,7 @@ spec:
       source:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git
         targetRevision: new-test
-        path:  "{{ .FilePath | baseName }}"  # Use the base_dir to target the correct path
+        path:  "{{.values.base_dir}"  # Use the base_dir to target the correct path
       destination:
         server: https://kubernetes.default.svc
         namespace: test
