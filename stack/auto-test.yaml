@@ -15,13 +15,13 @@ spec:
           - path: "source-apps/config.json" 
   template:
     metadata:
-      name: '{{ name }}'  # Name based on config.json
+      name: '{{ app.name }}'  # Name based on config.json
     spec:
       project: default
       source:
         repoURL: "https://github.com/OpsMx/argo-customer-demo.git"
         targetRevision: "new-test"
-        path:  '{{ .path }}' #'{{ .Values.b }}'  # Use base_dir defined in config.json
+        path:  '{{ app.path }}' #'{{ .Values.b }}'  # Use base_dir defined in config.json
       destination:
         server: https://kubernetes.default.svc
         namespace: default
