@@ -9,29 +9,26 @@ spec:
   goTemplateOptions: ["missingkey=error"]
   generators:
   - git:
-      repoURL: https://github.com/OpsMx/argo-customer-demo.git
-      revision: new-test
+      repoURL: "{{ .repoURL }}"  # Read repoURL from config.json
+      revision: "{{ .revision }}"  # Read revision from config.json
       files:
-        - path: "config-dir/*/config.json"  # This will recursively include all .yaml files under the source-apps directory
-      values:
-        base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}/{{index .path.segments 2}}"
+        - path: "{{ .path }}"  # Read path from config.json
   template:
     metadata:
-      name: '{{.path.basename}}'  # Dynamic name based on the file being deployed
+      name: '{{ .path.basename | replace ".yaml" "" }}-app'  # Create a unique name for each application
     spec:
       project: default
       source:
-        repoURL: https://github.com/OpsMx/argo-customer-demo.git
-        targetRevision: new-test
-        path: "{{.values.base_dir}}"  # Use the base_dir to target the correct path
+        repoURL: "{{ .repoURL }}"  # Use repoURL from config.json
+        targetRevision: "{{ .revision }}"  # Use revision from config.json
+        path: "{{ .path }}"  # Use path from config.json
       destination:
         server: https://kubernetes.default.svc
-        namespace: test
+        namespace: default  # Specify the target namespace
       syncPolicy:
         automated:
           prune: true
-          selfHeal: true  # Use the basename of the application directory for the namespace
-
+          selfHeal: true
 
 
 
