@@ -13,7 +13,7 @@ spec:
       files:
         - path: "source-apps/config.json"  # Reference the config.json file in your repository
       values:
-        newPaths: "{{(index .files.source-apps.config.json.newPath) }}" # Array of paths from config.json
+        newPaths: "{{index .files "source-apps/config.json" "newPath"}}" # Array of paths from config.json
   template:
     metadata:
       name: '{{index (splitList "/" .newPath) (len (splitList "/" .newPath) - 1)}}'  # Use the last segment of the path as the application name
