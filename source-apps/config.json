@@ -1,26 +1,3 @@
 {
-  "newPath": [
-    "source-apps/applications/appset-automated-sync/syncapp-dev.yaml",
-    "source-apps/applications/appset-automated-sync/syncapp-prod.yaml",
-    "source-apps/applications/combination-git-helm-sources/1-git-1-helm.yaml",
-    "source-apps/applications/combination-git-helm-sources/2-diff-git-source.yaml",
-    "source-apps/applications/combination-git-helm-sources/2-git-1-helm.yaml",
-    "source-apps/applications/combination-git-helm-sources/2-helm-1-git.yaml",
-    "source-apps/applications/combination-git-helm-sources/2-helm-2-git.yaml",
-    "source-apps/applications/git-source/1-git-source.yaml",
-    "source-apps/applications/git-source/2-git-source.yaml",
-    "source-apps/applications/global-sync/sync.yaml",
-    "source-apps/applications/helm-source/1-helm-source.yaml",
-    "source-apps/applications/helm-source/2-helm-source.yaml",
-    "source-apps/application-set/generators/git-generator.yaml",
-    "source-apps/application-set/generators/list-generator.yaml",
-    "source-apps/application-set/generators/matrix-generator.yaml",
-    "source-apps/application-set/generators/matrix-git-plugin-appset.yaml",
-    "source-apps/application-set/generators/multi-matrix-git-plugin-appset.yaml",
-    "source-apps/application-set/generators/plugin-configure.yaml",
-    "source-apps/application-set/generators/plugin-generator.yaml",
-    "source-apps/application-set/progressive-syncs/allatone.yaml",
-    "source-apps/application-set/progressive-syncs/resource-modification.yaml",
-    "source-apps/application-set/progressive-syncs/rollingsync.yaml"
-  ]
+  "path": "source-apps/**"
 }
