@@ -1,4 +1,4 @@
 {    
       "name": "2-helm-source",
-      "path": "source-apps/applications/helm-source/*"
+      "path": "source-apps/applications/**/*"
 }
