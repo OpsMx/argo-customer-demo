@@ -16,15 +16,16 @@ spec:
         app_path: "{{.path}}"
         #base_dir: "{{index .app_path.segment 0}}/{{index .app_path.segment 1}}/{{index .app_path.segment 2}}"
         newPath: "{{.files.source-apps.config.json.newPath}}"
+        base_dir: "{{index .newPath.segment 0}}/{{index .newPath.segment 1}}/{{index .newPath.segment 2}}"
   template:
     metadata:
-      name: '{{.newPath | splitList \"/\" | last}}'  # Dynamic name based on the file being deployed
+      name: '{{.newPath.basename}}'  # Dynamic name based on the file being deployed
     spec:
       project: default
       source:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git
         targetRevision: new-test
-        path: "{{.values.newPath}}"  # Use base_dir value from the config.json path
+        path: "{{.values.base_dir}}"  # Use base_dir value from the config.json path
       destination:
         server: https://kubernetes.default.svc
         namespace: test
