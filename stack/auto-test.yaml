@@ -16,7 +16,7 @@ spec:
       #   base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}/{{index .path.segments 2}}"
   template:
     metadata:
-      name: '{{ .name }}'  # Dynamic name based on the file being deployed
+      name: '{{ .name }}-{{ .path.basename }}'  # Dynamic name based on the file being deployed
     spec:
       project: default
       source:
