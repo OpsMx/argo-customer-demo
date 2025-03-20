@@ -14,7 +14,7 @@ spec:
         - path: "source-apps/config.json"  # Reference the config.json file in your repository
       values:
         app_path: "{{.path}}"
-        base_dir: "{{index (splitList \"/\" .path) 0}}/{{index (splitList \"/\" .path) 1}}/{{index (splitList \"/\" .path) 2}}"
+        base_dir: "{{index (splitList \"/\" .app_path) 0}}/{{index (splitList \"/\" .app_path) 1}}/{{index (splitList \"/\" .app_path) 2}}"
   template:
     metadata:
       name: '{{.files.path.basename}}'  # Dynamic name based on the file being deployed
