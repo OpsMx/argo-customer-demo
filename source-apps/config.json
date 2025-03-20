@@ -1,4 +1,4 @@
 {    
       "name": "2-helm-source",
-      "path": "source-apps/applications/**/*"
+      "path": "source-apps/applications/**/*.yaml"
 }
