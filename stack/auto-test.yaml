@@ -24,7 +24,7 @@ spec:
         targetRevision: "new-test"
         #path: "{{ .path }}" # ✅ Correct path reference
         #path: source-apps/applications/global-sync
-        path: '{{path}}'
+        path: '{{ .path }}'
       destination:
         server: https://kubernetes.default.svc
         namespace: test
