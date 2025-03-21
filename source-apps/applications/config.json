@@ -1,4 +1,4 @@
 {    
-      "path": "source-apps/applications/**/*.yaml"
+      "path": "source-apps/applications/*/*.yaml"
 }
 
