@@ -12,8 +12,8 @@ spec:
         revision: new-test
         files:
           - path: "source-apps/applications/config.json"  # ✅ Recursively include all YAML manifests
-        values:
-          base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}"
+        # values:
+        #   base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}"
   template:
     metadata:
       name: '{{ .path.basename }}'  # ✅ Dynamic name based on the file
