@@ -1,4 +1,3 @@
 {    
-      // "name": "2-helm-source",
-      "path": "source-apps/applications/**/*.yaml"
+      "path": "source-apps/applications/git-source/*.yaml"
 }
