@@ -12,18 +12,18 @@ spec:
       revision: new-test
       files:
         - path: "source-apps/*/config.json"  # Adjust to point to the correct file
-      values:
-        newPath: "{{ .files | first | fromJson | index \"newPath\" }}"  # Read newPath from the first config.json file
+      # values:
+      #   newPath: "{{path
 
   template:
     metadata:
-      name: '{{ .newPath | base }}-{{ index .newPath | splitList \"/\" | index 1 }}'
+      name: '{{ .newPath | base }}'
     spec:
       project: default
       source:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git
         targetRevision: "new-test"
-        path: "{{ .newPath }}"  # Use the extracted newPath value here
+        path: "{{ index .files 0 | fromJson | index "newPath" }}"  # Use the extracted newPath value here
       destination:
         server: https://kubernetes.default.svc
         namespace: test
