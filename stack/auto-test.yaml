@@ -22,7 +22,8 @@ spec:
       source:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git
         targetRevision: "new-test"
-        path: "{{ .path }}" # ✅ Correct path reference
+        # path: "{{ .path }}" # ✅ Correct path reference
+        path: source-apps/applications/global-sync/sync.yaml
       destination:
         server: https://kubernetes.default.svc
         namespace: test
