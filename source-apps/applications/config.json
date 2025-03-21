@@ -1,4 +1,4 @@
 {    
-      "path": "source-apps/applications/global-sync/sync.yaml"
+      "path": "source-apps/applications/**"
 }
 
