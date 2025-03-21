@@ -12,8 +12,8 @@ spec:
         revision: new-test
         files:
           - path: "source-apps/applications/config.json"  # ✅ Recursively include all YAML manifests
-        # values:
-        #   base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}"
+        values:
+          base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}"
   template:
     metadata:
       name: '{{ .path.basename }}'  # ✅ Dynamic name based on the file
@@ -22,8 +22,9 @@ spec:
       source:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git
         targetRevision: "new-test"
-        path: "{{ .path }}" # ✅ Correct path reference
+        #path: "{{ .path }}" # ✅ Correct path reference
         #path: source-apps/applications/global-sync
+        path: "{{ .values.base_dir }}"  # ✅ Correct path reference
       destination:
         server: https://kubernetes.default.svc
         namespace: test
