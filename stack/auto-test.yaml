@@ -12,9 +12,9 @@ spec:
       revision: new-test
       files:
         - path: "source-apps/applications/config.json"  # This will recursively include all .yaml files under the source-apps directory
-      values:
-        base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}" #/{{index .path.segments 2}}"
-        config: "{{ .path | cat }}"
+      # values:
+      #   base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}" #/{{index .path.segments 2}}"
+      #   config: "{{ .path | cat }}"
   template:
     metadata:
       name: '{{ .path.basename }}'  # Dynamic name based on the file being deployed
@@ -24,7 +24,7 @@ spec:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git
         targetRevision: "new-test"
         # base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}/{{index .path.segments 2}}"
-        path: "{{ .path.path }}"  # Use the base_dir to target the correct path
+        path: "{{ .path }}"  # Use the base_dir to target the correct path
       destination:
         server: https://kubernetes.default.svc
         namespace: test
