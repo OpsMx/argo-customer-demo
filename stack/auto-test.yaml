@@ -11,13 +11,13 @@ spec:
       repoURL: https://github.com/OpsMx/argo-customer-demo.git
       revision: new-test
       files:
-        - path: "source-apps/*/config.json"
+        - path: "source-apps/*/config.json"  # Adjust to point to the correct file
       values:
-        newPath: "{{ .files[0].newPath }}"  # Extract the newPath value from the config.json file
+        newPath: "{{ .files | first | fromJson | index \"newPath\" }}"  # Read newPath from the first config.json file
 
   template:
     metadata:
-      name: '{{ .newPath | base }}-{{index .newPath.segments 1}}'
+      name: '{{ .newPath | base }}-{{ index .newPath | splitList \"/\" | index 1 }}'
     spec:
       project: default
       source:
@@ -33,7 +33,6 @@ spec:
           selfHeal: true
         syncOptions:
           - CreateNamespace=true
-
 
 
 # apiVersion: argoproj.io/v1alpha1
