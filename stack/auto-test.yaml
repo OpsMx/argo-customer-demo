@@ -17,13 +17,13 @@ spec:
 
   template:
     metadata:
-      name: '{{ .newPath | base }}'
+      name: '{{ .newPath.basename }}'
     spec:
       project: default
       source:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git
         targetRevision: "new-test"
-        path: "{{ index .files 0 | fromJson | index "newPath" }}"  # Use the extracted newPath value here
+        path: "{{ .newPath}}"  # Use the extracted newPath value here
       destination:
         server: https://kubernetes.default.svc
         namespace: test
