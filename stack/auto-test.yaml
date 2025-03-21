@@ -17,7 +17,7 @@ spec:
 
   template:
     metadata:
-      name: '{{ .path.basename }}-temp'  # Dynamic name based on the file being deployed
+      name: '{{ .path.basename }}-{{index .path.segments 1}}'  # Dynamic name based on the file being deployed
     spec:
       project: default
       source:
