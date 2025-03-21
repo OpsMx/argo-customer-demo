@@ -24,7 +24,7 @@ spec:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git
         targetRevision: "new-test"
         #path: "{{ .values.base_dir }}/{{index .path.segments 2}}"
-        path: "{{ .values.base_dir }}/git-source"  # Use the base_dir to target the correct path
+        path: "{{ .values.base_dir }}"  # Use the base_dir to target the correct path
       destination:
         server: https://kubernetes.default.svc
         namespace: test
