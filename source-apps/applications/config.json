@@ -1,7 +1,5 @@
-{
-"applications": [
+
 {    
       "path": "source-apps/applications/**/*.yaml"
 }
-]
-}
+
