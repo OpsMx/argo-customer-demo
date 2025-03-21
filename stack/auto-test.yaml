@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: example-appset
+  name: source-apps
   namespace: argocd
 spec:
   generators:
     - git:
-        repoURL: https://github.com/your-repo.git
-        revision: main
+        repoURL: https://github.com/OpsMx/argo-customer-demo.git
+        revision: new-test
         files:
           - path: "source-apps/applications/*/config.json"
   template:
@@ -16,12 +16,12 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/your-repo.git
-        targetRevision: main
+        repoURL: https://github.com/OpsMx/argo-customer-demo.git
+        targetRevision: "new-test"
         path: '{{ .path }}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: your-namespace
+        namespace: test
       syncPolicy:
         automated:
           prune: true
