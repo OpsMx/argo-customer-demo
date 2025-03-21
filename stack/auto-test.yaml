@@ -13,7 +13,7 @@ spec:
       files:
         - path: "source-apps/applications/config.json"  # This will recursively include all .yaml files under the source-apps directory
       values:
-        base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}/{{index .path.segments 2}}"
+        base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}" #/{{index .path.segments 2}}
   template:
     metadata:
       name: '{{ .path.basename }}'  # Dynamic name based on the file being deployed
