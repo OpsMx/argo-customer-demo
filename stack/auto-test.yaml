@@ -23,7 +23,7 @@ spec:
       source:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git
         targetRevision: "new-test"
-        path: "{{.values.base_dir}}/global-sync"
+        path: "{{ .values.base_dir }}/global-sync"
       destination:
         server: https://kubernetes.default.svc
         namespace: test
