@@ -19,7 +19,7 @@ spec:
       source:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git # Replace with your Git repo URL
         targetRevision: new-test
-        path: '{{.appPath}}' # Path from the Json file.
+        path: '{{ .appPath }}' # Path from the Json file.
       destination:
         server: https://kubernetes.default.svc
         namespace: default
