@@ -9,10 +9,10 @@ spec:
       repoURL: https://github.com/OpsMx/argo-customer-demo.git # Replace with your Git repo URL
       revision: new-test
       files:
-      - path: "source-apps/applications/*.json"
+      - path: "source-apps/*/config.json"
   template:
     metadata:
-      name: 'app-for-test'
+      name: '{{ .clusterNam }}'
       namespace: argocd # Ensure this is the Argo CD namespace
     spec:
       project: default
