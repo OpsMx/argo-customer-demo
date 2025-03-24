@@ -1,8 +1,7 @@
-[
-  {
-    "appPath": "source-apps/applications/combination-git-helm-sources"
-  },
-  {
-    "appPath": "source-apps/applications/combination-git-helm-sources"
-  }
-]
+{
+  "clusterName": "apps-appset-syn",
+  "appPaths": [
+    "source-apps/application-set/generators/git-generator.yaml",
+    "source-apps/application-set/generators/git-generator.yaml"
+  ]
+}
