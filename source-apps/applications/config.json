@@ -1,4 +1,4 @@
 {
   "appName": "apps-appset-syn",
-  "appPaths": "source-apps/applications"
+  "appPath": "source-apps/applications"
 }
