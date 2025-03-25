@@ -4,7 +4,7 @@ metadata:
   name: guestbook
   namespace: argocd
 spec:
-  goTemplate: true
+  # goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
   - git:
