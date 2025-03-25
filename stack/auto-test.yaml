@@ -12,17 +12,17 @@ spec:
       revision: new-test
       files:
       - path: "source-apps/*/config.json"
-      # values:
-      #   base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}" #/{{index .path.segments 2}}"
+      values:
+        base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}" #/{{index .path.segments 2}}"
   template:
     metadata:
-      name: '{{ .values.appName }}'
+      name: '{{ .path.basename }}'
     spec:
       project: default
       source:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git
         targetRevision: new-test
-        path: "{{  .values.appPath }}" #"{{.values.base_dir}}"
+        path: "{{  .values.base_dir }}" #"{{.values.base_dir}}"
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: test
