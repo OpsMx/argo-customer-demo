@@ -4,7 +4,7 @@ metadata:
   name: guestbook
   namespace: argocd
 spec:
-  # goTemplate: true
+  goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
   - git:
@@ -22,7 +22,7 @@ spec:
       source:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git
         targetRevision: new-test
-        path: "{{index .path.segments 0}/applicatoions" #"{{.values.base_dir}}"
+        path: "{{index .path.segments 0}/applicatoions}}" #"{{.values.base_dir}}"
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: test
