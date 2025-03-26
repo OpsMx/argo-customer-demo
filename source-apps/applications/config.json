@@ -1,4 +1,6 @@
 {
-  "appName": "apps-appset-syn",
-  "appPath": "source-apps/applications"
+  "spec": {
+    "appName": "apps-appset-syn",
+    "appPath": "source-apps/applications"
+  }
 }
