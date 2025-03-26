@@ -24,7 +24,7 @@ spec:
       source:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git
         targetRevision: new-test
-        path: "{{.appPath}}" #"{{.values.base_dir}}"
+        path: "{{appPath}}" #"{{.values.base_dir}}"
         directory:
           recurse: true
       destination:
