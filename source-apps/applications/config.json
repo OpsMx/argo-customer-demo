@@ -1,7 +1,7 @@
-[
-
-  {
-    "appName": "app2",
-    "appPath": "source-apps/applications/"
-  }
-]
+{
+  "appName": "apps-appset-syn",
+  "appPaths": [
+    "source-apps/applications/git-source",
+    "source-apps/applications/helm-source"
+  ]
+}
