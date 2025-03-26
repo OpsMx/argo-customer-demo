@@ -1,7 +1,5 @@
-{
-  "apps": [
-    {
-      "appPath": "source-apps/applications"
-    }
-  ]
-}
+[
+  {
+    "appPath": "source-apps/applications"
+  }
+]
