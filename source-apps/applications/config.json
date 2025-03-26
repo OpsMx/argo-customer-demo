@@ -1,4 +1,10 @@
-{
-    "appName": "apps-appset-syn",
-    "appPath": "source-apps/applications"
-}
+[
+  {
+    "appName": "app1",
+    "appPath": "source-apps/applications/git-source"
+  },
+  {
+    "appName": "app2",
+    "appPath": "source-apps/applications/helm-source
+  }
+]
