@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: guestbook
+  name: test-suite-root-appset 
   namespace: argocd
 spec:
   goTemplate: true
@@ -11,10 +11,10 @@ spec:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git
         revision: new-test
         files:
-          - path: "config.json"  # Reads config.json from subdirectories
+          - path: "config-dir/*/config.json"  # Reads config.json from subdirectories
   template:
     metadata:
-      name: "app1"  
+      name: "root-app"  
     spec:
       project: default
       source:
