@@ -1,5 +1,6 @@
 {
-  "paths": [
+  "appName": "app1",
+  "appPath": [
     "source-apps/applications/git-source",
     "source-apps/applications/helm-source"
   ]
