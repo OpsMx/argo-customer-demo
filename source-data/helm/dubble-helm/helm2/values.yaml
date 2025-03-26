@@ -1,5 +1,5 @@
-replicaCount: 3
+replicaCount: 1
 image:
   repository: nginx
-  tag: stable
+  tag: latest
   pullPolicy: IfNotPresent
