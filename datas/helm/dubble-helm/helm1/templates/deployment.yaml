@@ -16,4 +16,4 @@ spec:
         - name: nginx
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command: ["/bin/bash", "-c", "while true; do echo mypod is running; sleep 5; done"]
+          # command: ["/bin/bash", "-c", "while true; do echo mypod is running; sleep 5; done"]
