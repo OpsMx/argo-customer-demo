@@ -11,7 +11,7 @@ spec:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git
         revision: new-test
         files:
-          - path: "source-apps/*/config.json"  # Reads config.json from subdirectories
+          - path: "source-apps/config.json"  # Reads config.json from subdirectories
   template:
     metadata:
       name: "app1"  
