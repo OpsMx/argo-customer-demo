@@ -1,10 +1,7 @@
 [
-  {
-    "appName": "app1",
-    "appPath": "source-apps/applications/git-source"
-  },
+
   {
     "appName": "app2",
-    "appPath": "source-apps/applications/helm-source"
+    "appPath": "source-apps/applications/"
   }
 ]
