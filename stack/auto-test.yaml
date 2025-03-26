@@ -18,13 +18,13 @@ spec:
         # base_dir: "{{index .path.segments 0}}/{{index .path.segments 1}}" #/{{index .path.segments 2}}"
   template:
     metadata:
-      name: '{{.appName}}'
+      name: '{{.spec.appName}}'
     spec:
       project: default
       source:
         repoURL: https://github.com/OpsMx/argo-customer-demo.git
         targetRevision: new-test
-        path: "{{.appPath}}/." #"{{.values.base_dir}}"
+        path: "{{.spec.appPath}}/." #"{{.values.base_dir}}"
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: test
