@@ -1,6 +1,5 @@
 {
-  "appName": "apps-appset-syn",
-  "appPaths": [
+  "paths": [
     "source-apps/applications/git-source",
     "source-apps/applications/helm-source"
   ]
